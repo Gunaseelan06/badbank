@@ -64,6 +64,7 @@
 
 
 
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -125,7 +126,9 @@ export default function MyNavbar({ user }) {
               {/* Show banking-related pages only if user is logged in */}
               {user !== null && (
                 <>
-                  <Nav.Item>
+                <>
+                {user?.name === 'admin' ? null :
+                <> <Nav.Item>
                     <Nav.Link href="#/deposit" style={style}>
                       Deposit
                     </Nav.Link>
@@ -135,6 +138,8 @@ export default function MyNavbar({ user }) {
                       Withdraw
                     </Nav.Link>
                   </Nav.Item>
+                  </>}
+                  </>
                   <Nav.Item>
                     {user?.name === 'admin' ? (
                       <Nav.Link href="#/alldata" style={style}>
@@ -155,7 +160,6 @@ export default function MyNavbar({ user }) {
     </>
   );
 }
-
 
 
 
